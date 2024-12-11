@@ -1,45 +1,49 @@
 # code-snippet-manager
 
-This template should help get you started developing with Vue 3 in Vite.
+개발자들을 위한 코드 스니펫 관리 도구
 
-## Recommended IDE Setup
+기본 프레임워크 & 핵심 기술:
+- Vue 3 (Composition API)
+- TypeScript (타입 안정성 강화)
+- Vite (빌드 도구)
+- Pinia (상태 관리)
+- Vue Router
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+UI/UX 관련:
+# UI 컴포넌트
+npm install @headlessui/vue   # 접근성 고려된 UI 컴포넌트
+npm install @heroicons/vue    # 아이콘
 
-## Type Support for `.vue` Imports in TS
+# 스타일링
+npm install tailwindcss postcss autoprefixer
+npm install @tailwindcss/forms  # 폼 스타일링
+npm install @tailwindcss/typography  # 마크다운 스타일링
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+# 코드 하이라이팅
+npm install prismjs
+npm install marked  # 마크다운 지원
 
-## Customize configuration
+데이터 관리:
+# 로컬 데이터 관리
+npm install idb  # IndexedDB Wrapper
+npm install dexie  # IndexedDB 라이브러리
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+# 상태 관리 지원
+npm install pinia-plugin-persistedstate  # 상태 영속성
 
-## Project Setup
+개발 도구 & 품질 관리:
+# 린팅 & 포맷팅
+npm install -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
+npm install -D prettier eslint-plugin-prettier
 
-```sh
-npm install
-```
+# 테스트
+npm install -D vitest @vue/test-utils
+npm install -D cypress  # E2E 테스트
 
-### Compile and Hot-Reload for Development
+---
 
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+1차 예정
+1. 코드 스니펫 추가 / 수정 / 삭제 / 조회
+2. 프로그래밍 언어별 분류
+3. 태그 기능
+4. 간단한 검색
