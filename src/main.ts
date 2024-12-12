@@ -22,6 +22,13 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import { faCode } from '@fortawesome/free-solid-svg-icons'
 
+import 'prismjs'
+import 'prismjs/themes/prism.css' // 기본 테마
+import 'prismjs/themes/prism-tomorrow.css'
+import 'prismjs/components/prism-javascript'
+import 'prismjs/components/prism-typescript'
+import 'prismjs/components/prism-css'
+
 library.add(faVuejs, faReact, faHtml5, faCss3, faJs, faJava, faPython, faCode)
 
 const app = createApp(App)

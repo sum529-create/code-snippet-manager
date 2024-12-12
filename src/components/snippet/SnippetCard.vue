@@ -5,8 +5,10 @@
       <font-awesome-icon v-if="isValidLanguage(item.language)" :icon="['fab', item.language]" />
       <font-awesome-icon v-else :icon="['fas', 'code']" />
     </template>
-    <template #default>
-      {{ item.code }}
+    <template #code>
+      <code :class="`language-${getLanClass(item.language)}`">
+        {{ item.code }}
+      </code>
     </template>
     <template #footer>
       <div class="flex flex-col flex-1">
@@ -26,6 +28,16 @@
 </template>
 
 <script setup lang="ts">
+import Prism from 'prismjs'
+import { onMounted, nextTick } from 'vue'
+
+// setup 내부에서
+onMounted(() => {
+  nextTick(() => {
+    Prism.highlightAll()
+  })
+})
+
 defineProps({
   item: {
     type: Object,
@@ -36,6 +48,18 @@ const validLan = ['vuejs', 'react', 'css3', 'js', 'python', 'java', 'html5']
 const isValidLanguage = (codeNm: string) => {
   return validLan.includes(codeNm)
 }
+const getLanClass = (lan: string) => {
+  const mapping: Record<string, string> = {
+    vuejs: 'js',
+    react: 'js',
+    css3: 'css',
+  }
+  return mapping[lan] || 'js'
+}
 </script>
 
-<style scoped></style>
+<style scoped>
+pre code {
+  @apply text-sm sm:text-xs md:text-[10px];
+}
+</style>
