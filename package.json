@@ -14,10 +14,16 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.7.1",
+    "@fortawesome/free-brands-svg-icons": "^6.7.1",
+    "@fortawesome/free-solid-svg-icons": "^6.7.1",
+    "@fortawesome/vue-fontawesome": "^3.0.8",
     "@headlessui/vue": "^1.7.23",
     "@heroicons/vue": "^2.2.0",
     "@jridgewell/gen-mapping": "^0.3.5",
+    "@tailwindcss/line-clamp": "^0.4.4",
     "pinia": "^2.1.7",
+    "prismjs": "^1.29.0",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5"
   },

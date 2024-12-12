@@ -1,0 +1,131 @@
+/* 전역 폰트 설정 */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif; /* 구글 폰트 사용 예시, 원하는 폰트로 변경 가능 */
+  background-color: #f9fafb; /* Tailwind의 bg-gray-100에 해당 */
+  color: #333; /* 기본 글자색 */
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+/* 링크 스타일 */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* 버튼 스타일 (기본 Tailwind 버튼 스타일을 확장) */
+.btn {
+  @apply inline-flex items-center justify-center font-semibold text-white py-2 px-4 rounded-lg transition-colors duration-300;
+}
+
+.btn-primary {
+  @apply bg-blue-500 hover:bg-blue-600 active:bg-blue-700;
+}
+
+.btn-secondary {
+  @apply bg-gray-500 hover:bg-gray-600 active:bg-gray-700;
+}
+
+.btn-danger {
+  @apply bg-red-500 hover:bg-red-600 active:bg-red-700;
+}
+
+.btn-outline {
+  @apply bg-transparent border-2 border-gray-300 text-gray-700 hover:bg-gray-100 active:bg-gray-200;
+}
+
+/* 입력 필드 스타일 */
+input,
+textarea,
+select {
+  @apply py-2 px-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+}
+
+/* 카드 스타일 */
+.card {
+  @apply bg-white shadow-md rounded-lg p-4;
+}
+
+.card-header {
+  @apply text-xl font-semibold text-gray-900;
+}
+
+.card-body {
+  @apply text-gray-700;
+}
+
+.card-footer {
+  @apply text-right text-gray-600;
+}
+
+.text-primary {
+  @apply text-blue-500;
+}
+
+.text-secondary {
+  @apply text-gray-500;
+}
+
+.text-danger {
+  @apply text-red-500;
+}
+
+/* Flexbox 및 Grid Layout */
+.flex-center {
+  @apply flex items-center justify-center;
+}
+
+.flex-between {
+  @apply flex items-center justify-between;
+}
+
+.grid-container {
+  @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4;
+}
+
+/* 기본 테이블 스타일 */
+table {
+  @apply w-full table-auto border-collapse border border-gray-300;
+}
+
+table th,
+table td {
+  @apply p-2 border-b border-gray-300 text-left;
+}
+
+table th {
+  @apply bg-gray-100 font-semibold;
+}
+
+/* 알림 메시지 */
+.alert {
+  @apply p-4 rounded-lg text-white;
+}
+
+.alert-info {
+  @apply bg-blue-500;
+}
+
+.alert-success {
+  @apply bg-green-500;
+}
+
+.alert-warning {
+  @apply bg-yellow-500;
+}
+
+.alert-danger {
+  @apply bg-red-500;
+}

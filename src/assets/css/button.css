@@ -1,0 +1,36 @@
+.btn {
+  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded-lg 
+         hover:bg-blue-600 active:bg-blue-700 
+         transition duration-300 ease-in-out;
+}
+
+.btn-wrapper {
+  @apply inline-flex items-center space-x-2 align-middle;
+}
+
+.btn-wrapper > span {
+  @apply align-middle leading-none pt-1;
+}
+
+.icon {
+  @apply w-6 h-6 align-middle;
+}
+
+.btn-secondary {
+  @apply bg-gray-500 hover:bg-gray-600 active:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg;
+}
+.btn-cancel {
+  @apply bg-gray-300 hover:bg-gray-400 active:bg-gray-500 text-gray-700 font-bold py-2 px-4 rounded-lg;
+}
+.btn-confirm {
+  @apply bg-green-500 hover:bg-green-600 active:bg-green-700 text-white font-bold py-2 px-4 rounded-lg;
+}
+.btn-warning {
+  @apply bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 text-white font-bold py-2 px-4 rounded-lg;
+}
+.btn-info {
+  @apply bg-blue-300 hover:bg-blue-400 active:bg-blue-500 text-white font-bold py-2 px-4 rounded-lg;
+}
+.btn-danger {
+  @apply bg-red-500 hover:bg-red-600 active:bg-red-700 text-white font-bold py-2 px-4 rounded-lg;
+}

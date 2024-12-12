@@ -7,12 +7,14 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AppCard: typeof import('./src/components/app/AppCard.vue')['default']
+    AppGrid: typeof import('./src/components/app/AppGrid.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SnippetCard: typeof import('./src/components/snippet/SnippetCard.vue')['default']
     SnippetFilter: typeof import('./src/components/snippet/SnippetFilter.vue')['default']
     SnippetForm: typeof import('./src/components/snippet/SnippetForm.vue')['default']
-    SnippetGrid: typeof import('./src/components/snippet/SnippetGrid.vue')['default']
+    SnippetGrid: typeof import('./src/components/app/SnippetGrid.vue')['default']
     SnippetList: typeof import('./src/components/snippet/SnippetList.vue')['default']
     TheHeader: typeof import('./src/components/layout/TheHeader.vue')['default']
   }

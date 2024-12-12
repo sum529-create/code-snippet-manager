@@ -1,7 +1,5 @@
 <template>
-  <main>
-    <snippet-list />
-  </main>
+  <snippet-list />
 </template>
 
 <script setup lang="ts"></script>
