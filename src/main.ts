@@ -24,7 +24,6 @@ import { faCode } from '@fortawesome/free-solid-svg-icons'
 
 import 'prismjs'
 import 'prismjs/themes/prism.css' // 기본 테마
-import 'prismjs/themes/prism-tomorrow.css'
 import 'prismjs/components/prism-javascript'
 import 'prismjs/components/prism-typescript'
 import 'prismjs/components/prism-css'
