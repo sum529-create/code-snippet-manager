@@ -9,6 +9,7 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
+import '@fortawesome/fontawesome-free/css/all.min.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {

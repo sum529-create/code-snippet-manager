@@ -15,7 +15,7 @@ export const dummySnippets: Snippet[] = [
  return arr.filter(item => item > 0)
    .map(num => num * 2);
 }`,
-    language: 'js',
+    language: 'html5',
     createdAt: '2024-03-12',
     tags: ['배열', '필터', '유틸리티'],
   },

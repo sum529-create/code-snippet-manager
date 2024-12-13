@@ -19,17 +19,17 @@
 
 <style scoped>
 .card {
-  @apply bg-white border shadow-[0_4px_6px_rgba(0,0,0,0.1),0_1px_3px_rgba(0,0,0,0.06)] rounded-lg border-gray-200 hover:bg-[#E9EFF5];
+  @apply bg-[#E9EFF5] border shadow-lg hover:shadow-2xl rounded-lg border-gray-200 transition-transform transform hover:-translate-y-2;
 }
 .card-header {
-  @apply p-4 font-bold text-base sm:text-lg md:text-base lg:text-lg bg-[lightblue] flex flex-nowrap items-center justify-between gap-[1em] align-middle;
+  @apply p-4 font-bold text-base sm:text-lg md:text-base lg:text-lg bg-indigo-100 shadow-sm flex flex-nowrap items-center justify-between gap-[1em] align-middle;
 }
 .card-body,
 .card-code {
   @apply bg-gray-50 h-32 line-clamp-3 p-4;
 }
 .card-code {
-  @apply font-mono overflow-auto whitespace-pre-wrap break-words w-full overflow-x-auto;
+  @apply font-mono overflow-auto whitespace-pre-wrap break-words w-full overflow-x-auto m-0;
 }
 .card-footer {
   @apply p-4 flex items-center justify-between text-sm text-gray-500;
