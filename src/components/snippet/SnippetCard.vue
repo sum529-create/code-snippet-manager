@@ -1,13 +1,18 @@
 <template>
   <app-card>
     <template #header>
-      <h2>{{ item.title }}</h2>
-      <font-awesome-icon
-        v-if="isValidLanguage(item.language)"
-        :class="setIconColor(item.language)"
-        :icon="['fab', item.language]"
-      />
-      <font-awesome-icon v-else :icon="['fas', 'code']" />
+      <h2 class="flex-1 break-keep">{{ item.title }}</h2>
+      <div
+        class="flex justify-center items-center bg-white h-10 w-10 md:h-9 md:w-9 lg:h-8 lg:w-8 rounded-full"
+      >
+        <font-awesome-icon
+          v-if="isValidLanguage(item.language)"
+          class="w-7 h-7 md:w-5 md:h-5 lg:w-6 lg:h-6"
+          :class="setIconColor(item.language)"
+          :icon="['fab', item.language]"
+        />
+        <font-awesome-icon v-else :icon="['fas', 'code']" />
+      </div>
     </template>
     <template #code>
       <code :class="`language-${getLanClass(item.language)}`">
