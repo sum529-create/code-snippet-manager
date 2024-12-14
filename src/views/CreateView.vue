@@ -7,7 +7,7 @@
     <form action="" class="space-y-6">
       <div>
         <label for="title" class="sub-title">Title</label>
-        <input type="text" id="title" v-model="title" />
+        <input type="text" id="title" v-model="title" placeholder="스니펫 제목을 입력하세요." />
       </div>
       <div>
         <label for="lang" class="sub-title">Language</label>
@@ -56,10 +56,18 @@
       </div>
       <div>
         <label for="tags" class="sub-title">Tags (comma separated)</label>
-        <input type="text" v-model="tags" name="tags" id="tags" />
+        <input
+          type="text"
+          v-model="tags"
+          name="tags"
+          id="tags"
+          placeholder="ex) 알고리즘, 상태관리 ..."
+        />
       </div>
       <div class="actions">
-        <button class="btn btn-danger">취소</button>
+        <router-link to="/">
+          <button class="btn btn-danger">취소</button>
+        </router-link>
         <button class="btn">생성</button>
       </div>
     </form>
