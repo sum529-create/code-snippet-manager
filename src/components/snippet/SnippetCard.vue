@@ -2,17 +2,7 @@
   <app-card>
     <template #header>
       <h2 class="flex-1 break-keep">{{ item.title }}</h2>
-      <div
-        class="flex justify-center items-center bg-white h-10 w-10 md:h-9 md:w-9 lg:h-8 lg:w-8 rounded-full"
-      >
-        <font-awesome-icon
-          v-if="isValidLanguage(item.language)"
-          class="w-7 h-7 md:w-5 md:h-5 lg:w-6 lg:h-6"
-          :class="setIconColor(item.language)"
-          :icon="['fab', item.language]"
-        />
-        <font-awesome-icon v-else :icon="['fas', 'code']" />
-      </div>
+      <snippet-code-icon :language="item.language" />
     </template>
     <template #code>
       <code :class="`language-${getLanClass(item.language)}`">
@@ -74,10 +64,6 @@ defineProps({
     required: true,
   },
 })
-const validLan = ['vuejs', 'react', 'css3', 'js', 'python', 'java', 'html5']
-const isValidLanguage = (codeNm: string) => {
-  return validLan.includes(codeNm)
-}
 const getLanClass = (lan: string) => {
   const mapping: Record<string, string> = {
     vuejs: 'js',
@@ -85,29 +71,6 @@ const getLanClass = (lan: string) => {
     css3: 'css',
   }
   return mapping[lan] || 'js'
-}
-
-const setIconColor = (lan: string) => {
-  switch (lan) {
-    case 'js':
-      return 'text-yellow-500'
-    case 'ts':
-      return 'text-[#3178C6]'
-    case 'vuejs':
-      return 'text-[#42B883]'
-    case 'css3':
-      return 'text-[#2965F1]'
-    case 'html5':
-      return 'text-[#E34F26]'
-    case 'react':
-      return 'text-[#61DAFB]'
-    case 'python':
-      return 'text-[#3776AB]'
-    case 'java':
-      return 'text-[#007396]'
-    default:
-      return 'text-black-500'
-  }
 }
 </script>
 

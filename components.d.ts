@@ -9,9 +9,11 @@ declare module 'vue' {
   export interface GlobalComponents {
     AppCard: typeof import('./src/components/app/AppCard.vue')['default']
     AppGrid: typeof import('./src/components/app/AppGrid.vue')['default']
+    AppLayout: typeof import('./src/components/layout/AppLayout.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SnippetCard: typeof import('./src/components/snippet/SnippetCard.vue')['default']
+    SnippetCodeIcon: typeof import('./src/components/snippet/SnippetCodeIcon.vue')['default']
     SnippetFilter: typeof import('./src/components/snippet/SnippetFilter.vue')['default']
     SnippetForm: typeof import('./src/components/snippet/SnippetForm.vue')['default']
     SnippetGrid: typeof import('./src/components/app/SnippetGrid.vue')['default']

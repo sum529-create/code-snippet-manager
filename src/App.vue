@@ -2,7 +2,7 @@
 
 <template>
   <the-header />
-  <router-view />
+  <app-layout />
 </template>
 
 <style scoped></style>
