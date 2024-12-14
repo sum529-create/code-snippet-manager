@@ -44,18 +44,19 @@
     <div class="flex flex-row flex-wrap gap-4 relative pb-2 last:pb-0">
       <div class="flex items-center gap-2">
         <label for="lang">언어 선택</label>
-        <select name="lang" id="lang">
-          <option value="0">JavaScript</option>
-          <option value="1">Vue</option>
-          <option value="2">React</option>
+        <select name="lang" id="lang" v-model="selLang">
+          <option value="">전체</option>
+          <option v-for="(lan, i) in snippets" :key="i" :value="lan.language">
+            {{ lan.language }}
+          </option>
         </select>
       </div>
       <div class="flex items-center gap-2">
         <label for="sort">정렬 기준</label>
-        <select name="sort" id="sort">
-          <option value="0">최신순</option>
-          <option value="1">오래된순</option>
-          <option value="2">제목</option>
+        <select name="sort" id="sort" v-model="sort">
+          <option value="newest">최신순</option>
+          <option value="oldest">오래된순</option>
+          <option value="title">제목</option>
         </select>
       </div>
     </div>
@@ -64,11 +65,21 @@
 </template>
 
 <script setup lang="ts">
+import { useSnippetsStore } from '@/stores/snippet'
+import { storeToRefs } from 'pinia'
+import { ref } from 'vue'
+
 interface FilterState {
   viewType: 'grid' | 'list'
   language: string
   sortBy: 'newest' | 'oldest' | 'title'
 }
+
+const store = useSnippetsStore()
+const { selectedLang, sortBy, snippets } = storeToRefs(store)
+
+const selLang = ref(selectedLang)
+const sort = ref(sortBy)
 </script>
 
 <style scoped></style>

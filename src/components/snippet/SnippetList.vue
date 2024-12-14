@@ -14,9 +14,11 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { dummySnippets } from '@/data/snippets'
+import { useSnippetsStore } from '@/stores/snippet'
+import { storeToRefs } from 'pinia'
 
-const data = ref(dummySnippets)
+const store = useSnippetsStore()
+const { filteredSnippets: data } = storeToRefs(store)
 const layout = ref(0)
 </script>
 
