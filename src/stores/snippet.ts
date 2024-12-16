@@ -1,9 +1,12 @@
-import { dummySnippets } from '@/data/snippets'
+import { supabase } from '@/lib/supabase'
+import type { Snippet } from '@/types/snippet'
 import { defineStore } from 'pinia'
 
 export const useSnippetsStore = defineStore('snippets', {
   state: () => ({
-    snippets: dummySnippets,
+    snippets: [] as Snippet[],
+    isLoading: false,
+    error: null,
     selectedLang: '',
     sortBy: 'newest', // newest: 최신순(기본값), oldest: 오래된순, title: 제목순
   }),
@@ -33,6 +36,22 @@ export const useSnippetsStore = defineStore('snippets', {
     },
   },
   actions: {
+    async createSnippet(snippet: Omit<Snippet, 'id' | 'created_at'>) {
+      try {
+        const { data, error } = await supabase.from('snippets').insert([snippet]).select()
+
+        if (error) {
+          throw error
+        }
+        if (data) {
+          this.snippets.unshift(data[0])
+        }
+        return { success: true }
+      } catch (error) {
+        console.error('Failed To Create Snippet: ', error)
+        return { success: false, error }
+      }
+    },
     setLanguage(lang: string) {
       this.selectedLang = lang
     },

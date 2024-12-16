@@ -4,7 +4,7 @@
       <h2 class="text-2xl font-semibold text-gray-800">새로운 스니펫 생성</h2>
       <hr class="my-4" />
     </div>
-    <form action="" class="space-y-6">
+    <form class="space-y-6">
       <div>
         <label for="title" class="sub-title">Title</label>
         <input type="text" id="title" v-model="title" placeholder="스니펫 제목을 입력하세요." />
@@ -68,7 +68,7 @@
         <router-link to="/">
           <button class="btn btn-danger">취소</button>
         </router-link>
-        <button class="btn">생성</button>
+        <button @click.prevent="createSnippet" class="btn">생성</button>
       </div>
     </form>
   </div>
@@ -112,6 +112,13 @@ const getEditorLanguage = computed(() => {
       return lang.value
   }
 })
+
+const createSnippet = () => {
+  console.log(title.value)
+  console.log(lang.value)
+  console.log(code.value)
+  console.log(tags.value)
+}
 </script>
 
 <style scoped>
