@@ -4,14 +4,14 @@
       <h2 class="text-2xl font-semibold text-gray-800">새로운 스니펫 생성</h2>
       <hr class="my-4" />
     </div>
-    <form class="flex flex-col space-y-6" :class="lang && 'min-h-screen '">
+    <form class="flex flex-col space-y-6" :class="language && 'min-h-screen '">
       <div class="flex-none">
         <label for="title" class="sub-title">Title</label>
         <input type="text" id="title" v-model="title" placeholder="스니펫 제목을 입력하세요." />
       </div>
       <div class="flex-none">
-        <label for="lang" class="sub-title">Language</label>
-        <select name="lang" id="lang" v-model="lang">
+        <label for="language" class="sub-title">Language</label>
+        <select name="language" id="language" v-model="language">
           <option value="">Select Language</option>
           <option value="js">JavaScript</option>
           <option value="ts">TypeScript</option>
@@ -23,7 +23,7 @@
           <option value="python">Python</option>
         </select>
       </div>
-      <div v-if="lang" class="flex flex-col flex-1 monaco-editor-container h-[400px]">
+      <div v-if="language" class="flex flex-col flex-1 monaco-editor-container h-[400px]">
         <span class="sub-title">Code</span>
         <div class="theme-toggle flex items-center gap-3 my-2">
           <span>Code Theme: </span>
@@ -42,14 +42,15 @@
           </label>
           <span class="flex-center space-x-2">
             <span
-              >Code Language: <i>{{ lang }}</i></span
+              >Code Language: <i>{{ language }}</i></span
             >
-            <snippet-code-icon :language="lang" />
+            <snippet-code-icon :language="language" />
           </span>
         </div>
         <MonacoEditor
           v-model="code"
           class="flex-1"
+          @change="handleChange"
           :language="getEditorLanguage"
           :options="editorOptions"
           :theme="isDark ? 'vs-dark' : 'vs-light'"
@@ -79,6 +80,8 @@
 import MonacoEditor from 'monaco-editor-vue3'
 import { monaco } from '@/lib/monaco'
 import { computed, ref } from 'vue'
+import { useSnippetsStore } from '@/stores/snippet'
+import router from '@/router'
 
 const editorOptions = {
   fontSize: 14,
@@ -94,13 +97,13 @@ const editorOptions = {
 monaco
 
 const title = ref('')
-const lang = ref('')
+const language = ref('')
 const code = ref('')
-const tags = ref([])
+const tags = ref('')
 const isDark = ref(false)
 
 const getEditorLanguage = computed(() => {
-  switch (lang.value) {
+  switch (language.value) {
     case 'js':
     case 'react':
     case 'vuejs':
@@ -112,15 +115,31 @@ const getEditorLanguage = computed(() => {
     case 'html5':
       return 'html'
     default:
-      return lang.value
+      return language.value
   }
 })
+const handleChange = (value: string) => {
+  code.value = value
+}
 
-const createSnippet = () => {
-  console.log(title.value)
-  console.log(lang.value)
-  console.log(code.value)
-  console.log(tags.value)
+const store = useSnippetsStore()
+
+const createSnippet = async () => {
+  const newSnippets = {
+    title: title.value,
+    code: code.value,
+    language: language.value,
+    tags: tags.value.split(',').map((t) => t.trim()),
+  }
+
+  const { success, error } = await store.createSnippet(newSnippets)
+  if (success) {
+    router.push({
+      name: 'home',
+    })
+  } else {
+    console.error(error)
+  }
 }
 </script>
 

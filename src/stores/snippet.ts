@@ -36,7 +36,7 @@ export const useSnippetsStore = defineStore('snippets', {
     },
   },
   actions: {
-    async createSnippet(snippet: Omit<Snippet, 'id' | 'created_at'>) {
+    async createSnippet(snippet: Omit<Snippet, 'id' | 'createdAt'>) {
       try {
         const { data, error } = await supabase.from('snippets').insert([snippet]).select()
 
