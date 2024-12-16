@@ -76,6 +76,7 @@
 
 <script setup lang="ts">
 import MonacoEditor from 'monaco-editor-vue3'
+import { monaco } from '@/lib/monaco'
 import { computed, ref } from 'vue'
 
 const editorOptions = {
@@ -89,6 +90,7 @@ const editorOptions = {
   tabSize: 2,
   roundedSelection: false,
 }
+monaco
 
 const title = ref('')
 const lang = ref('')

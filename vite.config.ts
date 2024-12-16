@@ -12,6 +12,9 @@ export default defineConfig({
       deep: true, // 하위 디렉토리까지 검색
     }),
   ],
+  worker: {
+    format: 'es',
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
