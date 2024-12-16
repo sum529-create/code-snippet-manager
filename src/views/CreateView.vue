@@ -4,12 +4,12 @@
       <h2 class="text-2xl font-semibold text-gray-800">새로운 스니펫 생성</h2>
       <hr class="my-4" />
     </div>
-    <form class="space-y-6">
-      <div>
+    <form class="flex flex-col space-y-6" :class="lang && 'min-h-screen '">
+      <div class="flex-none">
         <label for="title" class="sub-title">Title</label>
         <input type="text" id="title" v-model="title" placeholder="스니펫 제목을 입력하세요." />
       </div>
-      <div>
+      <div class="flex-none">
         <label for="lang" class="sub-title">Language</label>
         <select name="lang" id="lang" v-model="lang">
           <option value="">Select Language</option>
@@ -23,7 +23,7 @@
           <option value="python">Python</option>
         </select>
       </div>
-      <div v-if="lang" class="monaco-editor-container h-[400px]">
+      <div v-if="lang" class="flex flex-col flex-1 monaco-editor-container h-[400px]">
         <span class="sub-title">Code</span>
         <div class="theme-toggle flex items-center gap-3 my-2">
           <span>Code Theme: </span>
@@ -49,12 +49,13 @@
         </div>
         <MonacoEditor
           v-model="code"
+          class="flex-1"
           :language="getEditorLanguage"
           :options="editorOptions"
           :theme="isDark ? 'vs-dark' : 'vs-light'"
         />
       </div>
-      <div>
+      <div class="flex-none">
         <label for="tags" class="sub-title">Tags (comma separated)</label>
         <input
           type="text"
@@ -64,7 +65,7 @@
           placeholder="ex) 알고리즘, 상태관리 ..."
         />
       </div>
-      <div class="actions">
+      <div class="actions flex-none">
         <router-link to="/">
           <button class="btn btn-danger">취소</button>
         </router-link>
