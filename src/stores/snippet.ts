@@ -36,6 +36,21 @@ export const useSnippetsStore = defineStore('snippets', {
     },
   },
   actions: {
+    async fetchSnippets() {
+      try {
+        const { data, error } = await supabase.from('snippets').select('*')
+        if (error) {
+          throw error
+        }
+        if (data) {
+          this.snippets = data
+          return { success: true }
+        }
+      } catch (error) {
+        console.error('Failed to Fetch Snippet List: ', error)
+        return { success: false, error }
+      }
+    },
     async createSnippet(snippet: Omit<Snippet, 'id' | 'createdAt'>) {
       try {
         const { data, error } = await supabase.from('snippets').insert([snippet]).select()
@@ -49,6 +64,35 @@ export const useSnippetsStore = defineStore('snippets', {
         return { success: true }
       } catch (error) {
         console.error('Failed To Create Snippet: ', error)
+        return { success: false, error }
+      }
+    },
+    async deleteSnippet(id: number) {
+      try {
+        const { error } = await supabase.from('snippets').delete().eq('id', id)
+
+        if (error) {
+          throw error
+        }
+        this.snippets = this.snippets.filter((e) => e.id !== id)
+        return { success: true }
+      } catch (error) {
+        console.error('Failed To Delete Snippet: ', error)
+        return { success: false, error }
+      }
+    },
+    async updateSnippet(id: number, snippet: Partial<Snippet>) {
+      try {
+        const { error } = await supabase.from('snippets').update(snippet).eq('id', id)
+
+        if (error) throw error
+        const index = this.snippets.findIndex((e) => e.id === id)
+        if (index !== -1) {
+          this.snippets[index] = { ...this.snippets[index], ...snippet }
+          return { success: true }
+        }
+      } catch (error) {
+        console.error('Failed To Update Snippet: ', error)
         return { success: false, error }
       }
     },

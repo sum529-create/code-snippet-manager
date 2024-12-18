@@ -31,13 +31,13 @@
                 d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
               />
             </svg>
-            {{ item.createdAt }}
+            {{ createAtFormat }}
           </span>
           <div class="flex gap-1 justify-end">
             <button class="btn-icon">
               <i class="fa-regular fa-pen-to-square btn-icon-main text-lg"></i>
             </button>
-            <button class="btn-icon">
+            <button @click="deleteSnippet" class="btn-icon">
               <i class="fa-solid fa-trash btn-icon-danger text-lg"></i>
             </button>
           </div>
@@ -48,8 +48,9 @@
 </template>
 
 <script setup lang="ts">
+import { useSnippetsStore } from '@/stores/snippet'
 import Prism from 'prismjs'
-import { onMounted, nextTick } from 'vue'
+import { onMounted, nextTick, computed } from 'vue'
 
 // setup 내부에서
 onMounted(() => {
@@ -58,7 +59,7 @@ onMounted(() => {
   })
 })
 
-defineProps({
+const props = defineProps({
   item: {
     type: Object,
     required: true,
@@ -71,6 +72,25 @@ const getLanClass = (lan: string) => {
     css3: 'css',
   }
   return mapping[lan] || 'js'
+}
+
+const createAtFormat = computed(() => {
+  const keyword = 'T'
+  const index = props.item.created_at.indexOf(keyword)
+  return props.item.created_at.slice(0, index)
+})
+
+const store = useSnippetsStore()
+
+const deleteSnippet = async () => {
+  if (confirm(`${props.item.title}을 삭제하시겠습니까?`)) {
+    const { success, error } = await store.deleteSnippet(props.item.id)
+    if (success) {
+      return alert('해당 스니펫이 삭제되었습니다.')
+    } else {
+      console.log(error)
+    }
+  }
 }
 </script>
 

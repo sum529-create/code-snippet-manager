@@ -9,12 +9,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useSnippetsStore } from '@/stores/snippet'
 import { storeToRefs } from 'pinia'
 
 const store = useSnippetsStore()
+onMounted(async () => {
+  await store.fetchSnippets()
+})
 const { filteredSnippets: data } = storeToRefs(store)
+
 const layout = ref(0)
 </script>
 
