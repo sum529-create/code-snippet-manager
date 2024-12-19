@@ -12,9 +12,7 @@
       v-model:isDark="isDark"
     >
       <template #actions>
-        <router-link to="/">
-          <button class="btn btn-danger">취소</button>
-        </router-link>
+        <button @click.prevent="goToPage('home')" class="btn btn-danger">취소</button>
         <button @click.prevent="createSnippet" class="btn">생성</button>
       </template>
     </snippet-form>
@@ -24,7 +22,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useSnippetsStore } from '@/stores/snippet'
-import router from '@/router'
+import { useNavigation } from '@/composables/useNavigation'
 
 const title = ref('')
 const language = ref('')
@@ -33,6 +31,8 @@ const tags = ref('')
 const isDark = ref(false)
 
 const store = useSnippetsStore()
+
+const { goToPage } = useNavigation()
 
 const createSnippet = async () => {
   const newSnippets = {
@@ -44,9 +44,7 @@ const createSnippet = async () => {
 
   const { success, error } = await store.createSnippet(newSnippets)
   if (success) {
-    router.push({
-      name: 'home',
-    })
+    goToPage('home')
   } else {
     console.error(error)
   }
