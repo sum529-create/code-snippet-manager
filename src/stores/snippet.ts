@@ -51,6 +51,19 @@ export const useSnippetsStore = defineStore('snippets', {
         return { success: false, error }
       }
     },
+    async getSnippet(id: number) {
+      try {
+        const { error, data } = await supabase.from('snippets').select('*').eq('id', id).single()
+
+        if (error) throw error
+        if (data) {
+          return { success: true, data }
+        }
+      } catch (error) {
+        console.error('Failed to Load Snippet: ', error)
+        return { success: false, error }
+      }
+    },
     async createSnippet(snippet: Omit<Snippet, 'id' | 'createdAt'>) {
       try {
         const { data, error } = await supabase.from('snippets').insert([snippet]).select()
