@@ -31,7 +31,7 @@
                 d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
               />
             </svg>
-            {{ createAtFormat }}
+            {{ formatDate(item.created_at) }}
           </span>
           <div class="flex gap-1 justify-end">
             <button class="btn-icon">
@@ -48,9 +48,12 @@
 </template>
 
 <script setup lang="ts">
+import { useDateTime } from '@/composables/useDateTime'
 import { useSnippetsStore } from '@/stores/snippet'
 import Prism from 'prismjs'
-import { onMounted, nextTick, computed } from 'vue'
+import { onMounted, nextTick } from 'vue'
+
+const { formatDate } = useDateTime()
 
 // setup 내부에서
 onMounted(() => {
@@ -73,12 +76,6 @@ const getLanClass = (lan: string) => {
   }
   return mapping[lan] || 'js'
 }
-
-const createAtFormat = computed(() => {
-  const keyword = 'T'
-  const index = props.item.created_at.indexOf(keyword)
-  return props.item.created_at.slice(0, index)
-})
 
 const store = useSnippetsStore()
 

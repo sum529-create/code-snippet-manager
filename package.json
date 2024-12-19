@@ -25,6 +25,7 @@
     "@monaco-editor/loader": "^1.4.0",
     "@supabase/supabase-js": "^2.47.7",
     "@tailwindcss/line-clamp": "^0.4.4",
+    "dayjs": "^1.11.13",
     "monaco-editor-vue3": "^0.1.10",
     "pinia": "^2.1.7",
     "prismjs": "^1.29.0",
