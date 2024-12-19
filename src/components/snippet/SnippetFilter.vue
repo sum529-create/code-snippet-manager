@@ -69,6 +69,8 @@ import { useSnippetsStore } from '@/stores/snippet'
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
 
+defineEmits(['layout'])
+
 interface FilterState {
   viewType: 'grid' | 'list'
   language: string
