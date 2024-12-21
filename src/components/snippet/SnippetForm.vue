@@ -1,10 +1,11 @@
 <template>
-  <form class="flex flex-col space-y-6" :class="language && 'min-h-screen '">
+  <form @submit.prevent class="flex flex-col space-y-6" :class="language && 'min-h-screen '">
     <div class="flex-none">
       <label for="title" class="sub-title">Title</label>
       <input
         type="text"
         id="title"
+        @keydown.enter.prevent
         :value="title"
         @input="$emit('update:title', ($event.target as HTMLSelectElement).value)"
         placeholder="스니펫 제목을 입력하세요."
@@ -67,10 +68,15 @@
       />
     </div>
     <div class="flex-none">
+      <div v-for="(tag, i) in submitTags" :key="i">
+        {{ tag }}
+      </div>
       <label for="tags" class="sub-title">Tags (comma separated)</label>
       <input
         type="text"
         :value="tags"
+        @keyup="handleInput"
+        @keydown.enter.prevent
         @input="$emit('update:tags', ($event.target as HTMLSelectElement).value)"
         name="tags"
         id="tags"
@@ -86,7 +92,7 @@
 <script setup lang="ts">
 import MonacoEditor from 'monaco-editor-vue3'
 import { monaco } from '@/lib/monaco'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
 const props = defineProps({
   title: String,
@@ -95,7 +101,28 @@ const props = defineProps({
   tags: String,
   isDark: Boolean,
 })
-defineEmits(['update:title', 'update:language', 'update:code', 'update:tags', 'update:isDark'])
+const emits = defineEmits([
+  'update:title',
+  'update:language',
+  'update:code',
+  'update:tags',
+  'update:isDark',
+])
+
+const submitTags = ref<string[]>([])
+
+const handleInput = (e: KeyboardEvent) => {
+  if (e.key === 'Enter' || e.key === ',') {
+    e.preventDefault()
+    const tag = props.tags?.trim().slice(0, -1)
+    if (tag && !submitTags.value?.includes(tag)) {
+      submitTags.value.push(tag)
+    }
+    setTimeout(() => {
+      emits('update:tags', '')
+    }, 100)
+  }
+}
 
 const editorOptions = {
   fontSize: 14,
