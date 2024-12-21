@@ -6,9 +6,9 @@
     <div v-if="$slots.default" class="card-body">
       <slot />
     </div>
-    <pre v-if="$slots.code" class="card-code">
-      <slot name="code" />
-    </pre>
+    <div v-if="$slots.code" class="card-code">
+      <pre><slot name="code" /></pre>
+    </div>
     <div v-if="$slots.footer" class="card-footer">
       <slot name="footer" />
     </div>
@@ -26,10 +26,13 @@
 }
 .card-body,
 .card-code {
-  @apply bg-gray-50 h-32 line-clamp-3 p-4;
+  @apply bg-[#f5f2f0] h-32 line-clamp-3 p-4;
 }
 .card-code {
-  @apply font-mono overflow-auto whitespace-pre-wrap break-words w-full overflow-x-auto m-0;
+  @apply font-mono overflow-auto whitespace-pre-wrap break-words w-full overflow-x-auto m-0 p-0;
+}
+.card-code pre {
+  @apply m-0;
 }
 .card-footer {
   @apply p-4 flex items-center justify-between text-sm text-gray-500;

@@ -11,7 +11,7 @@
     </template>
     <template #footer>
       <div class="flex flex-col flex-1 space-y-2">
-        <div class="flex gap-1 pb-4 relative">
+        <div class="flex gap-1 pb-4 relative flex-wrap">
           <span v-for="(tag, i) in item.tags" :key="i" class="tag">{{ tag }}</span>
           <span class="absolute left-0 bottom-0 w-full h-px bg-gray-300"></span>
         </div>
