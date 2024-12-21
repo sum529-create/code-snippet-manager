@@ -34,7 +34,7 @@
             {{ formatDate(item.created_at) }}
           </span>
           <div class="flex gap-1 justify-end">
-            <button class="btn-icon">
+            <button @click="goToPage('SnippetDetail', { id: item.id })" class="btn-icon">
               <i class="fa-regular fa-pen-to-square btn-icon-main text-lg"></i>
             </button>
             <button @click="deleteSnippet" class="btn-icon">
@@ -52,7 +52,9 @@ import { useDateTime } from '@/composables/useDateTime'
 import { useSnippetsStore } from '@/stores/snippet'
 import Prism from 'prismjs'
 import { onMounted, nextTick } from 'vue'
+import { useNavigation } from '@/composables/useNavigation'
 
+const { goToPage } = useNavigation()
 const { formatDate } = useDateTime()
 
 // setup 내부에서

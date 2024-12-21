@@ -126,8 +126,6 @@ const getEditorLanguage = computed(() => {
       return props.language
   }
 })
-
-const onEditorChange = (newValue: String) => {}
 </script>
 
 <style scoped>

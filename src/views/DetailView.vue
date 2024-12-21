@@ -23,7 +23,7 @@
     </div>
     <div class="flex justify-end gap-4 mt-6">
       <button @click="goToPage('home')" class="btn btn-danger">취소</button>
-      <button class="btn">수정</button>
+      <button @click="goToPage('SnippetEdit', { id: snippet?.id })" class="btn">수정</button>
     </div>
   </div>
 </template>
