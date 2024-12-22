@@ -75,10 +75,9 @@
         </div>
         <input
           type="text"
-          :value="tags"
+          v-model="tempTags"
           @keyup="handleInput"
           @keydown.enter.prevent
-          @input="$emit('update:tags', ($event.target as HTMLSelectElement).value)"
           name="tags"
           id="tags"
           placeholder="ex) 알고리즘, 상태관리…"
@@ -94,7 +93,7 @@
 <script setup lang="ts">
 import MonacoEditor from 'monaco-editor-vue3'
 import { monaco } from '@/lib/monaco'
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref, watchEffect } from 'vue'
 
 const props = defineProps({
   title: String,
@@ -112,16 +111,24 @@ const emits = defineEmits([
 ])
 
 const submitTags = ref<string[]>([])
+const tempTags = ref('')
+
+watchEffect(() => {
+  if (props.tags) {
+    submitTags.value = props.tags.split(',').map((e) => e.trim())
+  }
+})
 
 const handleInput = (e: KeyboardEvent) => {
   if (e.key === 'Enter' || e.key === ',') {
     e.preventDefault()
-    const tag = props.tags?.trim().slice(0, -1)
+    const tag = tempTags.value.trim().slice(0, -1)
     if (tag && !submitTags.value?.includes(tag)) {
       submitTags.value.push(tag)
+      emits('update:tags', submitTags.value.toString())
     }
     setTimeout(() => {
-      emits('update:tags', '')
+      tempTags.value = ''
     }, 100)
   }
 }
@@ -158,6 +165,7 @@ const getEditorLanguage = computed(() => {
 
 const deleteTag = (i: number) => {
   submitTags.value.splice(i, 1)
+  emits('update:tags', submitTags.value.toString())
 }
 </script>
 

@@ -64,6 +64,8 @@ const editSnippet = async () => {
       } else {
         console.error(error)
       }
+    } else {
+      alert('스니펫 수정을 실패하였습니다.')
     }
   }
 }
