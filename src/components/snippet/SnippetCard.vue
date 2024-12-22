@@ -34,10 +34,10 @@
             {{ formatDate(item.created_at) }}
           </span>
           <div class="flex gap-1 justify-end">
-            <button @click="goToPage('SnippetDetail', { id: item.id })" class="btn-icon">
+            <button @click.prevent.stop="goToPage('SnippetEdit', { id: item.id })" class="btn-icon">
               <i class="fa-regular fa-pen-to-square btn-icon-main text-lg"></i>
             </button>
-            <button @click="deleteSnippet" class="btn-icon">
+            <button @click.prevent.stop="deleteSnippet" class="btn-icon">
               <i class="fa-solid fa-trash btn-icon-danger text-lg"></i>
             </button>
           </div>
