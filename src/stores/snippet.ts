@@ -116,4 +116,5 @@ export const useSnippetsStore = defineStore('snippets', {
       this.sortBy = sort
     },
   },
+  persist: true,
 })

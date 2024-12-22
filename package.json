@@ -27,7 +27,8 @@
     "@tailwindcss/line-clamp": "^0.4.4",
     "dayjs": "^1.11.13",
     "monaco-editor-vue3": "^0.1.10",
-    "pinia": "^2.1.7",
+    "pinia": "^2.3.0",
+    "pinia-plugin-persistedstate": "^4.2.0",
     "prismjs": "^1.29.0",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5"
