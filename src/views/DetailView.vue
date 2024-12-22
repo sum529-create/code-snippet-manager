@@ -4,10 +4,13 @@
       <span class="tag" v-for="(tag, i) in snippet?.tags" :key="i">{{ tag }}</span>
     </div>
     <div class="flex flex-col">
-      <h2 class="text-3xl font-bold text-gray-800 mb-2">{{ snippet?.title }}</h2>
-      <div class="flex items-center gap-4 text-sm text-gray-500">
-        <span>{{ formatDate(snippet?.created_at) }}</span>
+      <div class="flex flex-col text-xs text-gray-500 text-center w-fit gap-0.5">
+        <snippet-code-icon :language="snippet.language" />
         <span>{{ snippet?.language }}</span>
+      </div>
+      <h2 class="text-3xl font-bold text-gray-800 mb-2">{{ snippet?.title }}</h2>
+      <div class="flex items-center text-sm text-gray-500">
+        <span>{{ formatDate(snippet?.created_at) }}</span>
       </div>
     </div>
     <div class="rounded-lg shadow-sm border flex h-[400px] border-gray-200 mt-6 p-4">
@@ -85,6 +88,17 @@ const getEditorLanguage = computed(() => {
       return snippet.value.language
   }
 })
+const deleteSnippet = async () => {
+  if (confirm(`${snippet.value.title}을 삭제하시겠습니까?`)) {
+    const { success, error } = await store.deleteSnippet(snippet.value.id)
+    if (success) {
+      alert('해당 스니펫이 삭제되었습니다.')
+      goToPage('home')
+    } else {
+      console.log(error)
+    }
+  }
+}
 </script>
 
 <style scoped></style>
