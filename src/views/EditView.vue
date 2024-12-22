@@ -14,7 +14,14 @@
     >
       <template #actions>
         <button @click.prevent="goToPage('home')" class="btn btn-danger">취소</button>
-        <button @click.prevent="editSnippet" class="btn">수정</button>
+        <button @click.prevent="editSnippet" class="btn">
+          <template v-if="isLoading">
+            <div
+              class="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"
+            ></div>
+          </template>
+          <template v-else> 수정 </template>
+        </button>
       </template>
     </snippet-form>
   </div>
@@ -24,11 +31,13 @@
 import { useNavigation } from '@/composables/useNavigation'
 import { useSnippetsStore } from '@/stores/snippet'
 import type { Snippet } from '@/types/snippet'
+import { storeToRefs } from 'pinia'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 const { goToPage } = useNavigation()
 const store = useSnippetsStore()
+const { isLoading } = storeToRefs(store)
 const route = useRoute()
 const id = Number(route.params.id)
 type EditSnippet = Pick<Snippet, 'title' | 'language' | 'code' | 'tags'>
@@ -49,6 +58,18 @@ onMounted(async () => {
 })
 
 const editSnippet = async () => {
+  if (!snippet.value.title) {
+    return alert('스니펫 제목을 입력해주세요.')
+  }
+  if (!snippet.value.language) {
+    return alert('작성하실 언어를 선택해주세요.')
+  }
+  if (!snippet.value.code) {
+    return alert('코드를 입력해주세요.')
+  }
+  if (!snippet.value.tags) {
+    return alert('하나이상의 태그를 입력해주세요.')
+  }
   if (confirm('수정하시겠습니까?')) {
     const result = await store.updateSnippet(id, {
       ...snippet.value,

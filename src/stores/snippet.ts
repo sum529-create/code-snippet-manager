@@ -37,6 +37,7 @@ export const useSnippetsStore = defineStore('snippets', {
   },
   actions: {
     async fetchSnippets() {
+      this.isLoading = true
       try {
         const { data, error } = await supabase.from('snippets').select('*')
         if (error) {
@@ -49,9 +50,12 @@ export const useSnippetsStore = defineStore('snippets', {
       } catch (error) {
         console.error('Failed to Fetch Snippet List: ', error)
         return { success: false, error }
+      } finally {
+        this.isLoading = false
       }
     },
     async getSnippet(id: number) {
+      this.isLoading = true
       try {
         const { error, data } = await supabase.from('snippets').select('*').eq('id', id).single()
 
@@ -62,9 +66,12 @@ export const useSnippetsStore = defineStore('snippets', {
       } catch (error) {
         console.error('Failed to Load Snippet: ', error)
         return { success: false, error }
+      } finally {
+        this.isLoading = false
       }
     },
     async createSnippet(snippet: Omit<Snippet, 'id' | 'createdAt'>) {
+      this.isLoading = true
       try {
         const { data, error } = await supabase.from('snippets').insert([snippet]).select()
 
@@ -78,9 +85,12 @@ export const useSnippetsStore = defineStore('snippets', {
       } catch (error) {
         console.error('Failed To Create Snippet: ', error)
         return { success: false, error }
+      } finally {
+        this.isLoading = false
       }
     },
     async deleteSnippet(id: number) {
+      this.isLoading = true
       try {
         const { error } = await supabase.from('snippets').delete().eq('id', id)
 
@@ -92,9 +102,12 @@ export const useSnippetsStore = defineStore('snippets', {
       } catch (error) {
         console.error('Failed To Delete Snippet: ', error)
         return { success: false, error }
+      } finally {
+        this.isLoading = false
       }
     },
     async updateSnippet(id: number, snippet: Partial<Snippet>) {
+      this.isLoading = true
       try {
         const { error } = await supabase.from('snippets').update(snippet).eq('id', id)
 
@@ -107,6 +120,8 @@ export const useSnippetsStore = defineStore('snippets', {
       } catch (error) {
         console.error('Failed To Update Snippet: ', error)
         return { success: false, error }
+      } finally {
+        this.isLoading = false
       }
     },
     setLanguage(lang: string) {

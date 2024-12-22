@@ -22,7 +22,15 @@
       />
     </div>
     <div class="flex justify-end gap-4 mt-6">
-      <button @click="goToPage('home')" class="btn btn-danger">취소</button>
+      <button @click="goToPage('home')" class="btn btn-line-danger">취소</button>
+      <button @click="deleteSnippet" class="btn btn-danger">
+        <template v-if="isLoading">
+          <div
+            class="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"
+          ></div>
+        </template>
+        <template v-else> 삭제 </template>
+      </button>
       <button @click="goToPage('SnippetEdit', { id: snippet?.id })" class="btn">수정</button>
     </div>
   </div>
@@ -35,15 +43,25 @@ import { useSnippetsStore } from '@/stores/snippet'
 import { computed, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import MonacoEditor from 'monaco-editor-vue3'
+import { storeToRefs } from 'pinia'
 
 const { goToPage } = useNavigation()
 
 const { formatDate } = useDateTime()
 
 const store = useSnippetsStore()
+const { isLoading } = storeToRefs(store)
+
 const route = useRoute()
 const id = Number(route.params.id)
-const snippet = ref()
+const snippet = ref({
+  id: 0,
+  title: '',
+  code: '',
+  language: '',
+  tags: [],
+  created_at: '',
+})
 onMounted(async () => {
   const result = await store.getSnippet(id)
   if (result?.success) {

@@ -10,6 +10,7 @@ declare module 'vue' {
     AppCard: typeof import('./src/components/app/AppCard.vue')['default']
     AppGrid: typeof import('./src/components/app/AppGrid.vue')['default']
     AppLayout: typeof import('./src/components/layout/AppLayout.vue')['default']
+    AppLoading: typeof import('./src/components/app/AppLoading.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SnippetCard: typeof import('./src/components/snippet/SnippetCard.vue')['default']
