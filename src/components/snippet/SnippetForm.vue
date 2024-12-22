@@ -17,6 +17,7 @@
         name="language"
         id="language"
         :value="language"
+        @keydown.enter.prevent
         @input="$emit('update:language', ($event.target as HTMLSelectElement).value)"
       >
         <option value="">Select Language</option>

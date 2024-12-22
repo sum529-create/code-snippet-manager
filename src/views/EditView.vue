@@ -10,7 +10,7 @@
       v-model:language="snippet.language"
       v-model:code="snippet.code"
       v-model:tags="strTags"
-      :isDark="false"
+      v-model:isDark="isDark"
     >
       <template #actions>
         <button @click.prevent="goToPage('home')" class="btn btn-danger">취소</button>
@@ -48,6 +48,7 @@ const snippet = ref<EditSnippet>({
   tags: [],
 })
 const strTags = ref('')
+const isDark = ref(false)
 
 onMounted(async () => {
   const result = await store.getSnippet(id)
