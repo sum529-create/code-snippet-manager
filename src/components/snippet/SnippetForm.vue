@@ -68,20 +68,22 @@
       />
     </div>
     <div class="flex-none">
-      <div v-for="(tag, i) in submitTags" :key="i">
-        {{ tag }}
-      </div>
       <label for="tags" class="sub-title">Tags (comma separated)</label>
-      <input
-        type="text"
-        :value="tags"
-        @keyup="handleInput"
-        @keydown.enter.prevent
-        @input="$emit('update:tags', ($event.target as HTMLSelectElement).value)"
-        name="tags"
-        id="tags"
-        placeholder="ex) 알고리즘, 상태관리 ..."
-      />
+      <div class="tags-area">
+        <div v-for="(tag, i) in submitTags" :key="i" class="tag" @click="deleteTag(i)">
+          {{ tag }}
+        </div>
+        <input
+          type="text"
+          :value="tags"
+          @keyup="handleInput"
+          @keydown.enter.prevent
+          @input="$emit('update:tags', ($event.target as HTMLSelectElement).value)"
+          name="tags"
+          id="tags"
+          placeholder="ex) 알고리즘, 상태관리…"
+        />…
+      </div>
     </div>
     <div class="actions flex-none">
       <slot name="actions"> </slot>
@@ -153,6 +155,10 @@ const getEditorLanguage = computed(() => {
       return props.language
   }
 })
+
+const deleteTag = (i: number) => {
+  submitTags.value.splice(i, 1)
+}
 </script>
 
 <style scoped>
@@ -170,5 +176,17 @@ textarea {
 }
 .actions {
   @apply flex justify-end gap-4 mt-6;
+}
+.tags-area {
+  @apply flex items-center flex-nowrap border bg-white p-3 rounded-lg border-solid;
+}
+.tags-area .tag {
+  @apply overflow-visible text-clip;
+}
+.tags-area > input {
+  @apply p-0 border-0;
+}
+.tags-area > input:focus {
+  @apply outline-none shadow-none border-[initial] ring-0 ring-offset-0;
 }
 </style>
