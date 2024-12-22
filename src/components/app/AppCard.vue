@@ -32,7 +32,7 @@
   @apply font-mono overflow-auto whitespace-pre-wrap break-words w-full overflow-x-auto m-0 p-0;
 }
 .card-code pre {
-  @apply m-0;
+  @apply m-0 h-[inherit];
 }
 .card-footer {
   @apply p-4 flex items-center justify-between text-sm text-gray-500;
