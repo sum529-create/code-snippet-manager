@@ -13,6 +13,7 @@
     </div>
     <div class="flex-none">
       <label for="language" class="sub-title">Language</label>
+      <p class="info-text">※ Language 선택 시 코드 작성영역이 나타납니다.</p>
       <select
         name="language"
         id="language"
@@ -70,6 +71,7 @@
     </div>
     <div class="flex-none">
       <label for="tags" class="sub-title">Tags (comma separated)</label>
+      <p class="info-text-warm">※ 태그는 최대 10개까지 추가 가능합니다.</p>
       <div class="tags-area">
         <div v-for="(tag, i) in submitTags" :key="i" class="tag" @click="deleteTag(i)">
           {{ tag }}
@@ -121,6 +123,9 @@ watchEffect(() => {
 })
 
 const handleInput = (e: KeyboardEvent) => {
+  if (submitTags.value.length >= 10) {
+    return alert('태그는 최대 10개까지 추가하실 수 있습니다.')
+  }
   if (e.key === 'Enter' || e.key === ',') {
     e.preventDefault()
     const tag = tempTags.value.trim().slice(0, -1)
