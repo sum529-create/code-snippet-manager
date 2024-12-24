@@ -31,6 +31,7 @@ import { ref } from 'vue'
 import { useSnippetsStore } from '@/stores/snippet'
 import { useNavigation } from '@/composables/useNavigation'
 import { storeToRefs } from 'pinia'
+import { useInputValidation } from '@/composables/useInputValidation'
 
 const title = ref('')
 const language = ref('')
@@ -43,6 +44,8 @@ const store = useSnippetsStore()
 const { isLoading } = storeToRefs(store)
 
 const { goToPage } = useNavigation()
+
+const { validateTitle } = useInputValidation()
 
 const createSnippet = async () => {
   if (!title.value) {

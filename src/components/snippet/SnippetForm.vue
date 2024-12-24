@@ -6,7 +6,7 @@
         type="text"
         id="title"
         @keydown.enter.prevent
-        :value="title"
+        :value="sanitizeText(title || '')"
         @input="$emit('update:title', ($event.target as HTMLSelectElement).value)"
         placeholder="스니펫 제목을 입력하세요."
       />
@@ -96,7 +96,8 @@
 <script setup lang="ts">
 import MonacoEditor from 'monaco-editor-vue3'
 import { monaco } from '@/lib/monaco'
-import { computed, onMounted, ref, watchEffect } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
+import { useInputValidation } from '@/composables/useInputValidation'
 
 const props = defineProps({
   title: String,
@@ -115,6 +116,8 @@ const emits = defineEmits([
 
 const submitTags = ref<string[]>([])
 const tempTags = ref('')
+
+const { sanitizeText } = useInputValidation()
 
 watchEffect(() => {
   if (props.tags) {
