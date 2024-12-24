@@ -1,7 +1,7 @@
 <template>
   <app-card>
     <template #header>
-      <h2 class="flex-1 break-keep">{{ item.title }}</h2>
+      <h2 class="flex-1 break-keep clamp-text">{{ item.title }}</h2>
       <snippet-code-icon :language="item.language" />
     </template>
     <template #code>
