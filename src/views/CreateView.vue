@@ -32,6 +32,7 @@ import { useSnippetsStore } from '@/stores/snippet'
 import { useNavigation } from '@/composables/useNavigation'
 import { storeToRefs } from 'pinia'
 import { useInputValidation } from '@/composables/useInputValidation'
+import { profanityFilter } from '@/utils/profanityFilter'
 
 const title = ref('')
 const language = ref('')
@@ -48,6 +49,14 @@ const { goToPage } = useNavigation()
 const { validateTitle } = useInputValidation()
 
 const createSnippet = async () => {
+  const { inValid, message } = validateTitle(title.value)
+  if (!inValid) {
+    return alert(message)
+  }
+
+  if (!(await profanityFilter(title.value))) {
+    return alert('스니펫 제목에 금칙어를 제거해주세요.')
+  }
   if (!title.value) {
     return alert('스니펫 제목을 입력해주세요.')
   }
@@ -58,7 +67,7 @@ const createSnippet = async () => {
     return alert('코드를 입력해주세요.')
   }
   if (!tags.value) {
-    return alert('하나이상의 태그를 입력해주세요.')
+    return alert('하나 이상의 태그를 입력해주세요.')
   }
 
   const newSnippets = {

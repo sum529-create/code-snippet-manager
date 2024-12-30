@@ -28,9 +28,11 @@
 </template>
 
 <script setup lang="ts">
+import { useInputValidation } from '@/composables/useInputValidation'
 import { useNavigation } from '@/composables/useNavigation'
 import { useSnippetsStore } from '@/stores/snippet'
 import type { Snippet } from '@/types/snippet'
+import { profanityFilter } from '@/utils/profanityFilter'
 import { storeToRefs } from 'pinia'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
@@ -58,7 +60,17 @@ onMounted(async () => {
   }
 })
 
+const { validateTitle } = useInputValidation()
+
 const editSnippet = async () => {
+  const { inValid, message } = validateTitle(snippet.value.title)
+  if (!inValid) {
+    return alert(message)
+  }
+
+  if (!(await profanityFilter(snippet.value.title))) {
+    return alert('스니펫 제목에 금칙어를 제거해주세요.')
+  }
   if (!snippet.value.title) {
     return alert('스니펫 제목을 입력해주세요.')
   }
