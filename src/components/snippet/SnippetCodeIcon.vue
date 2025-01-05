@@ -8,7 +8,12 @@
       :class="setIconColor(language)"
       :icon="['fab', language]"
     />
-    <font-awesome-icon v-else :icon="['fas', 'code']" />
+    <font-awesome-icon
+      v-else
+      class="w-7 h-7 md:w-5 md:h-5 lg:w-6 lg:h-6"
+      :class="setIconColor(language)"
+      :icon="['fas', 'code']"
+    />
   </div>
 </template>
 
