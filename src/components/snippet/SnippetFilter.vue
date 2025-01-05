@@ -3,7 +3,7 @@
     class="filter-wrapper flex flex-wrap flex-col md:space-y-2 px-6 py-3 bg-gray-100 shadow-md rounded-lg"
   >
     <div class="gap-2.5 relative pb-2 hidden md:flex">
-      <button class="btn" @click="$emit('layout', 0)">
+      <button class="toggle-btn" @click="$emit('layout', 0)">
         <span class="btn-wrapper">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +22,7 @@
           <span> Grid </span>
         </span>
       </button>
-      <button class="btn" @click="$emit('layout', 1)">
+      <button class="toggle-btn" @click="$emit('layout', 1)">
         <span class="btn-wrapper">
           <svg
             xmlns="http://www.w3.org/2000/svg"

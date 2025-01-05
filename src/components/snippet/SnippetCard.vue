@@ -100,13 +100,4 @@ const deleteSnippet = async () => {
 pre code {
   @apply text-sm sm:text-xs md:text-[10px];
 }
-.tag {
-  @apply inline-block shadow-md text-sm font-medium transition-[background-color] duration-[0.3s] ease-[ease] mr-2 px-3 py-1 rounded-full max-w-[200px] whitespace-nowrap overflow-hidden text-ellipsis;
-  background-color: var(--card-tag-background);
-  color: var(--card-tag-text);
-}
-.tag:hover {
-  background-color: var(--card-tag-hover-background);
-  color: var(--card-tag-hover-text);
-}
 </style>

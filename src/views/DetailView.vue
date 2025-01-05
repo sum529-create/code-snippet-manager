@@ -1,15 +1,15 @@
 <template>
-  <div class="space-y-6">
+  <div class="space-y-6 detail-wrapper">
     <div class="flex gap-2 flex-wrap mb-4">
       <span class="tag" v-for="(tag, i) in snippet?.tags" :key="i">{{ tag }}</span>
     </div>
     <div class="flex flex-col">
-      <div class="flex flex-col text-xs text-gray-500 text-center w-fit gap-0.5">
+      <div class="flex flex-col text-xs sub-text text-center w-fit gap-0.5">
         <snippet-code-icon :language="snippet.language" />
         <span>{{ snippet?.language }}</span>
       </div>
-      <h2 class="text-3xl font-bold text-gray-800 mb-2">{{ snippet?.title }}</h2>
-      <div class="flex items-center text-sm text-gray-500">
+      <h2 class="text-3xl font-bold main-text mb-2">{{ snippet?.title }}</h2>
+      <div class="flex items-center text-sm sub-text">
         <span>{{ formatDate(snippet?.created_at) }}</span>
       </div>
     </div>
@@ -25,7 +25,7 @@
       />
     </div>
     <div class="flex justify-end gap-4 mt-6">
-      <button @click="goToPage('home')" class="btn btn-line-danger">취소</button>
+      <button @click="goToPage('home')" class="btn-line btn-line-danger">취소</button>
       <button @click="deleteSnippet" class="btn btn-danger">
         <template v-if="isLoading">
           <div
