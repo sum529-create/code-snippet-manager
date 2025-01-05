@@ -1,6 +1,6 @@
 <script setup lang="ts"></script>
 
-<template>
+<template class="min-h-screen">
   <the-header />
   <app-layout />
 </template>

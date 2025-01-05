@@ -19,14 +19,19 @@
 
 <style scoped>
 .card {
-  @apply bg-[#E9EFF5] border shadow-lg hover:shadow-2xl rounded-lg border-gray-200 transition-transform transform hover:-translate-y-2;
+  @apply border shadow-lg hover:shadow-2xl rounded-lg transition-transform transform hover:-translate-y-2;
+  background-color: var(--card-background);
+  border-color: var(--card-border);
 }
 .card-header {
-  @apply p-4 font-bold text-base sm:text-lg md:text-base lg:text-lg bg-indigo-100 shadow-sm flex flex-nowrap items-center justify-between gap-[1em] align-middle;
+  @apply p-4 font-bold text-base sm:text-lg md:text-base lg:text-lg shadow-sm flex flex-nowrap items-center justify-between gap-[1em] align-middle;
+  background-color: var(--card-header-background);
+  color: var(--card-header-text);
 }
 .card-body,
 .card-code {
-  @apply bg-[#f5f2f0] h-32 line-clamp-3 p-4;
+  @apply h-32 line-clamp-3 p-4;
+  background-color: var(--card-body-background);
 }
 .card-code {
   @apply font-mono overflow-auto whitespace-pre-wrap break-words w-full overflow-x-auto m-0 p-0;
@@ -35,6 +40,8 @@
   @apply m-0 h-[inherit];
 }
 .card-footer {
-  @apply p-4 flex items-center justify-between text-sm text-gray-500;
+  @apply p-4 flex items-center justify-between text-sm;
+  background-color: var(--card-footer-background);
+  color: var(--card-footer-text);
 }
 </style>

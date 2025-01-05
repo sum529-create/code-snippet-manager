@@ -12,8 +12,8 @@
     <template #footer>
       <div class="flex flex-col flex-1 space-y-2">
         <div class="flex gap-1 pb-4 relative flex-wrap">
-          <span v-for="(tag, i) in item.tags" :key="i" class="tag">{{ tag }}</span>
-          <span class="absolute left-0 bottom-0 w-full h-px bg-gray-300"></span>
+          <span v-for="(tag, i) in item.tags" :key="i" class="tag cursor-pointer">{{ tag }}</span>
+          <span class="absolute left-0 bottom-0 w-full h-px"></span>
         </div>
         <div class="flex justify-between items-center flex-wrap">
           <span class="flex items-center gap-1 align-middle leading-none;">
@@ -34,11 +34,14 @@
             {{ formatDate(item.created_at) }}
           </span>
           <div class="flex gap-1 justify-end">
-            <button @click.prevent.stop="goToPage('SnippetEdit', { id: item.id })" class="btn-icon">
-              <i class="fa-regular fa-pen-to-square btn-icon-main text-lg"></i>
+            <button
+              @click.prevent.stop="goToPage('SnippetEdit', { id: item.id })"
+              class="btn-icon btn-icon-main"
+            >
+              <i class="fa-regular fa-pen-to-square text-lg"></i>
             </button>
-            <button @click.prevent.stop="deleteSnippet" class="btn-icon">
-              <i class="fa-solid fa-trash btn-icon-danger text-lg"></i>
+            <button @click.prevent.stop="deleteSnippet" class="btn-icon btn-icon-danger">
+              <i class="fa-solid fa-trash text-lg"></i>
             </button>
           </div>
         </div>
@@ -96,5 +99,14 @@ const deleteSnippet = async () => {
 <style scoped>
 pre code {
   @apply text-sm sm:text-xs md:text-[10px];
+}
+.tag {
+  @apply inline-block shadow-md text-sm font-medium transition-[background-color] duration-[0.3s] ease-[ease] mr-2 px-3 py-1 rounded-full max-w-[200px] whitespace-nowrap overflow-hidden text-ellipsis;
+  background-color: var(--card-tag-background);
+  color: var(--card-tag-text);
+}
+.tag:hover {
+  background-color: var(--card-tag-hover-background);
+  color: var(--card-tag-hover-text);
 }
 </style>

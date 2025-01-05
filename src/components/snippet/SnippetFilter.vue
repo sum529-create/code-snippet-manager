@@ -1,5 +1,7 @@
 <template>
-  <div class="flex flex-wrap flex-col md:space-y-2 px-6 py-3 bg-gray-100 shadow-md rounded-lg">
+  <div
+    class="filter-wrapper flex flex-wrap flex-col md:space-y-2 px-6 py-3 bg-gray-100 shadow-md rounded-lg"
+  >
     <div class="gap-2.5 relative pb-2 hidden md:flex">
       <button class="btn" @click="$emit('layout', 0)">
         <span class="btn-wrapper">
@@ -39,7 +41,7 @@
           <span> List </span>
         </span>
       </button>
-      <span class="absolute left-0 bottom-0 w-full h-px bg-gray-300"></span>
+      <span class="separator absolute left-0 bottom-0 w-full h-px bg-gray-300"></span>
     </div>
     <div class="flex flex-row flex-wrap gap-4 relative pb-2 last:pb-0">
       <div class="flex items-center gap-2">
@@ -61,7 +63,6 @@
       </div>
     </div>
   </div>
-  <div></div>
 </template>
 
 <script setup lang="ts">

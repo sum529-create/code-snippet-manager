@@ -1,7 +1,9 @@
+import './assets/css/base.css'
 import './assets/css/tailwind.css'
 import './assets/css/button.css'
 import './assets/css/common.css'
 import './assets/css/snippet.css'
+import './assets/css/theme.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'

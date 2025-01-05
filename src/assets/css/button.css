@@ -1,68 +1,132 @@
 .btn {
-  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded-lg 
-         hover:bg-blue-600 active:bg-blue-700 
+  @apply font-bold py-2 px-4 rounded-lg 
          transition duration-300 ease-in-out;
+  background-color: var(--button-primary-background);
+  color: var(--button-primary-text);
+}
+.btn:hover {
+  background-color: var(--button-primary-hover-background);
+}
+.btn:active {
+  background-color: var(--button-primary-active-background);
 }
 
 .btn-icon {
-  @apply flex items-center p-2 rounded-md hover:bg-gray-200;
+  @apply flex items-center p-2 rounded-md 
+         transition duration-300 ease-in-out;
+}
+.btn-icon:hover {
+  background-color: var(--icon--hover-color);
 }
 
 .btn-wrapper {
   @apply inline-flex items-center space-x-2 align-middle;
 }
 
+.btn-wrapper svg {
+  color: var(--button-icon-color);
+}
+
 .btn-wrapper > span {
-  @apply align-middle leading-none pt-1;
+  @apply align-middle leading-none;
 }
 
 .icon {
   @apply w-6 h-6 align-middle;
 }
 
+/* 버튼 스타일 - 라이트 모드 */
 .btn-secondary {
-  @apply bg-gray-500 hover:bg-gray-600 active:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg;
+  @apply bg-[var(--color-bg-gray-500)] hover:bg-[var(--color-bg-gray-600)] active:bg-[var(--color-bg-gray-700)] text-[var(--color-text-white)] font-bold py-2 px-4 rounded-lg;
 }
 .btn-cancel {
-  @apply bg-gray-300 hover:bg-gray-400 active:bg-gray-500 text-gray-700 font-bold py-2 px-4 rounded-lg;
+  @apply bg-[var(--color-bg-gray-300)] hover:bg-[var(--color-bg-gray-400)] active:bg-[var(--color-bg-gray-500)] text-[var(--color-text-gray-700)] font-bold py-2 px-4 rounded-lg;
 }
 .btn-confirm {
-  @apply bg-green-500 hover:bg-green-600 active:bg-green-700 text-white font-bold py-2 px-4 rounded-lg;
+  @apply bg-[var(--color-bg-green-500)] hover:bg-[var(--color-bg-green-600)] active:bg-[var(--color-bg-green-700)] text-[var(--color-text-white)] font-bold py-2 px-4 rounded-lg;
 }
 .btn-warning {
-  @apply bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 text-white font-bold py-2 px-4 rounded-lg;
+  @apply bg-[var(--color-bg-yellow-500)] hover:bg-[var(--color-bg-yellow-600)] active:bg-[var(--color-bg-yellow-700)] text-[var(--color-text-white)] font-bold py-2 px-4 rounded-lg;
 }
 .btn-info {
-  @apply bg-blue-300 hover:bg-blue-400 active:bg-blue-500 text-white font-bold py-2 px-4 rounded-lg;
+  @apply bg-[var(--color-bg-blue-300)] hover:bg-[var(--color-bg-blue-400)] active:bg-[var(--color-bg-blue-500)] text-[var(--color-text-white)] font-bold py-2 px-4 rounded-lg;
 }
 .btn-danger {
-  @apply bg-red-500 hover:bg-red-600 active:bg-red-700 text-white font-bold py-2 px-4 rounded-lg;
+  @apply bg-[var(--color-bg-red-500)] hover:bg-[var(--color-bg-red-600)] active:bg-[var(--color-bg-red-700)] text-[var(--color-text-white)] font-bold py-2 px-4 rounded-lg;
 }
 .btn-line-danger {
-  @apply border border-red-500 hover:border-red-600 active:border-red-700 text-red-500 font-bold py-2 px-4 rounded-lg bg-white hover:bg-red-100;
+  @apply border border-[var(--color-bg-red-500)] hover:border-[var(--color-bg-red-600)] active:border-[var(--color-bg-red-700)] text-[var(--color-bg-red-500)] font-bold py-2 px-4 rounded-lg bg-white hover:bg-[var(--color-bg-red-500)] hover:text-[var(--color-text-white)];
 }
 
+/* 아이콘 버튼 - 라이트 모드 */
 .btn-icon-main {
-  @apply text-blue-500 hover:text-blue-700 active:text-blue-800;
+  @apply text-[var(--color-bg-blue-500)] hover:text-[var(--color-bg-blue-700)] active:text-[var(--color-bg-blue-800)];
 }
 .btn-icon-secondary {
-  @apply text-gray-500 hover:text-gray-600 active:text-gray-700;
+  @apply text-[var(--color-bg-gray-500)] hover:text-[var(--color-bg-gray-600)] active:text-[var(--color-bg-gray-700)];
 }
 .btn-icon-cancel {
-  @apply text-gray-300 hover:text-gray-400 active:text-gray-500;
+  @apply text-[var(--color-bg-gray-300)] hover:text-[var(--color-bg-gray-400)] active:text-[var(--color-bg-gray-500)];
 }
 .btn-icon-confirm {
-  @apply text-green-500 hover:text-green-600 active:text-green-700;
+  @apply text-[var(--color-bg-green-500)] hover:text-[var(--color-bg-green-600)] active:text-[var(--color-bg-green-700)];
 }
 .btn-icon-warning {
-  @apply text-yellow-500 hover:text-yellow-600 active:text-yellow-700;
+  @apply text-[var(--color-bg-yellow-500)] hover:text-[var(--color-bg-yellow-600)] active:text-[var(--color-bg-yellow-700)];
 }
 .btn-icon-info {
-  @apply text-blue-300 hover:text-blue-400 active:text-blue-500;
+  @apply text-[var(--color-bg-blue-300)] hover:text-[var(--color-bg-blue-400)] active:text-[var(--color-bg-blue-500)];
 }
 .btn-icon-danger {
-  @apply text-red-500 hover:text-red-600 active:text-red-700;
+  @apply text-[var(--color-bg-red-500)] hover:text-[var(--color-bg-red-600)] active:text-[var(--color-bg-red-700)];
 }
+
+/* 버튼 스타일 - 다크 모드 */
+.dark .btn-secondary {
+  @apply bg-[var(--color-bg-gray-500)] hover:bg-[var(--color-bg-gray-600)] active:bg-[var(--color-bg-gray-700)] text-white font-bold py-2 px-4 rounded-lg;
+}
+.dark .btn-cancel {
+  @apply bg-[var(--color-bg-gray-300)] hover:bg-[var(--color-bg-gray-400)] active:bg-[var(--color-bg-gray-500)] text-[var(--color-text-gray-500)] font-bold py-2 px-4 rounded-lg;
+}
+.dark .btn-confirm {
+  @apply bg-[var(--color-bg-green-500)] hover:bg-[var(--color-bg-green-600)] active:bg-[var(--color-bg-green-700)] text-white font-bold py-2 px-4 rounded-lg;
+}
+.dark .btn-warning {
+  @apply bg-[var(--color-bg-yellow-500)] hover:bg-[var(--color-bg-yellow-600)] active:bg-[var(--color-bg-yellow-700)] text-white font-bold py-2 px-4 rounded-lg;
+}
+.dark .btn-info {
+  @apply bg-[var(--color-bg-blue-300)] hover:bg-[var(--color-bg-blue-400)] active:bg-[var(--color-bg-blue-500)] text-white font-bold py-2 px-4 rounded-lg;
+}
+.dark .btn-danger {
+  @apply bg-[var(--color-bg-red-500)] hover:bg-[var(--color-bg-red-600)] active:bg-[var(--color-bg-red-700)] text-white font-bold py-2 px-4 rounded-lg;
+}
+.dark .btn-line-danger {
+  @apply border border-[var(--color-bg-red-500)] hover:border-[var(--color-bg-red-600)] active:border-[var(--color-bg-red-700)] text-[var(--color-bg-red-500)] font-bold py-2 px-4 rounded-lg bg-transparent hover:bg-[var(--color-bg-red-500)] hover:text-white;
+}
+
+/* 아이콘 버튼 - 다크 모드 */
+.dark .btn-icon-main {
+  @apply text-[var(--color-bg-blue-500)] hover:text-[var(--color-bg-blue-700)] active:text-[var(--color-bg-blue-800)];
+}
+.dark .btn-icon-secondary {
+  @apply text-[var(--color-bg-gray-500)] hover:text-[var(--color-bg-gray-600)] active:text-[var(--color-bg-gray-700)];
+}
+.dark .btn-icon-cancel {
+  @apply text-[var(--color-bg-gray-300)] hover:text-[var(--color-bg-gray-400)] active:text-[var(--color-bg-gray-500)];
+}
+.dark .btn-icon-confirm {
+  @apply text-[var(--color-bg-green-500)] hover:text-[var(--color-bg-green-600)] active:text-[var(--color-bg-green-700)];
+}
+.dark .btn-icon-warning {
+  @apply text-[var(--color-bg-yellow-500)] hover:text-[var(--color-bg-yellow-600)] active:text-[var(--color-bg-yellow-700)];
+}
+.dark .btn-icon-info {
+  @apply text-[var(--color-bg-blue-300)] hover:text-[var(--color-bg-blue-400)] active:text-[var(--color-bg-blue-500)];
+}
+.dark .btn-icon-danger {
+  @apply text-[var(--color-bg-red-500)] hover:text-[var(--color-bg-red-600)] active:text-[var(--color-bg-red-700)];
+}
+
 .switch {
   @apply relative inline-block w-16 h-8;
 }

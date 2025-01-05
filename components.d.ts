@@ -20,5 +20,6 @@ declare module 'vue' {
     SnippetGrid: typeof import('./src/components/app/SnippetGrid.vue')['default']
     SnippetList: typeof import('./src/components/snippet/SnippetList.vue')['default']
     TheHeader: typeof import('./src/components/layout/TheHeader.vue')['default']
+    ThemeToggle: typeof import('./src/components/common/ThemeToggle.vue')['default']
   }
 }

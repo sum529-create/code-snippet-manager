@@ -35,19 +35,41 @@
 
   --section-gap: 160px;
 }
+/* 색상 설정 */
+:root {
+  --color-bg-gray-500: #4b5563;
+  --color-bg-gray-600: #374151;
+  --color-bg-gray-700: #1f2937;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
+  --color-bg-green-500: #10b981;
+  --color-bg-green-600: #059669;
+  --color-bg-green-700: #047857;
 
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
+  --color-bg-yellow-500: #f59e0b;
+  --color-bg-yellow-600: #d97706;
+  --color-bg-yellow-700: #b45309;
 
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
-  }
+  --color-bg-blue-300: #93c5fd;
+  --color-bg-blue-400: #60a5fa;
+  --color-bg-blue-500: #3b82f6;
+  --color-bg-blue-700: #1e40af;
+  --color-bg-blue-800: #1e3a8a;
+
+  --color-bg-red-300: #fca5a5;
+  --color-bg-red-400: #f87171;
+  --color-bg-red-500: #ef4444;
+  --color-bg-red-600: #dc2626;
+  --color-bg-red-700: #b91c1c;
+
+  --color-text-gray-300: #d1d5db;
+  --color-text-gray-500: #9ca3af;
+}
+:root.dark {
+  --color-bg-red-600: #f87171;
+  --color-bg-red-700: #fca5a5;
+
+  --color-bg-blue-700: #60a5fa;
+  --color-bg-blue-800: #93c5fd;
 }
 
 *,

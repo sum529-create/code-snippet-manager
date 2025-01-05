@@ -35,8 +35,7 @@
     <div v-if="language" class="flex flex-col flex-1 monaco-editor-container h-[400px]">
       <span class="sub-title">Code</span>
       <div class="theme-toggle flex items-center gap-3 my-2">
-        <span>Code Theme: </span>
-        <label class="switch">
+        <!-- <label class="switch">
           <input
             type="checkbox"
             :checked="isDark"
@@ -52,7 +51,7 @@
               ></i>
             </span>
           </span>
-        </label>
+        </label> -->
         <span class="flex-center space-x-2">
           <span
             >Code Language: <i>{{ language }}</i></span
@@ -98,21 +97,18 @@ import MonacoEditor from 'monaco-editor-vue3'
 import { monaco } from '@/lib/monaco'
 import { computed, ref, watchEffect } from 'vue'
 import { useInputValidation } from '@/composables/useInputValidation'
+import { useThemeStore } from '@/stores/theme'
 
 const props = defineProps({
   title: String,
   language: String,
   code: String,
   tags: String,
-  isDark: Boolean,
 })
-const emits = defineEmits([
-  'update:title',
-  'update:language',
-  'update:code',
-  'update:tags',
-  'update:isDark',
-])
+const emits = defineEmits(['update:title', 'update:language', 'update:code', 'update:tags'])
+
+// store dark mode
+const { isDark } = useThemeStore()
 
 const submitTags = ref<string[]>([])
 const tempTags = ref('')

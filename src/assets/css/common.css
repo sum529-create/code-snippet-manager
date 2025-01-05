@@ -15,6 +15,10 @@ body {
   font-size: 16px;
 }
 
+main {
+  @apply min-h-screen;
+}
+
 /* 링크 스타일 */
 a {
   text-decoration: none;

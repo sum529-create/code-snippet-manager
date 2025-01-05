@@ -1,0 +1,149 @@
+/* dark theme css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Theme variables */
+:root {
+  --header-bg: var(--vt-c-white);
+  --header-text: #1f2937;
+  --header-text-hover-background: #f3f4f6;
+  --header-text-active: #2563eb;
+  --header-box-shadow: 0 1px 2px 0 var(--header-box-showdow-color);
+  --header-box-showdow-color: #0000000d;
+  --input-box-background: var(--vt-c-white);
+  --input-box-border: #e5e7eb;
+  --input-box-border-focus: #2563eb;
+  --input-box-placeholder: #6b7280;
+  --header-menu-mobile-icon: #333;
+  --header-menu-mobile-nav-background: #2f855a;
+  --header-menu-modbile-nav-background-hover: #276749;
+  --header-menu-mobile-nav-text: #ffffff8c;
+  --header-menu-mobile-nav-text-hover: var(--vt-c-white);
+  --header-menu-mobile-nav-text-active: #ffffffe1;
+  --separator-background: #e5e7eb;
+  --main-background: #f9fafb;
+  --filter-wrapper-background: #f3f4f6;
+  --filter-wrapper-text: #333;
+  --button-primary-background: #3b82f6;
+  --button-primary-text: var(--vt-c-white);
+  --button-primary-hover-background: #2563eb;
+  --button-primary-active-background: #1d4ed8;
+  --button-icon-color: var(--vt-c-white);
+  --card-background: #e9eff5;
+  --card-border: #e5e7eb;
+  --card-header-background: #e0e7ff;
+  --card-header-text: #333;
+  --card-body-background: #f5f2f0;
+  --card-footer-background: #e9eff5;
+  --card-footer-text: #6b7280;
+  --card-tag-background: #e5e7eb;
+  --card-tag-text: #333;
+  --card-tag-hover-background: #6b7280;
+  --card-tag-hover-text: var(--vt-c-white);
+  --icon--hover-color: #e5e7eb;
+}
+:root.dark {
+  --header-bg: #1f2937;
+  --header-text: #f3f4f6;
+  --header-text-hover-background: #374151;
+  --header-text-active: #fef08a;
+  --header-box-shadow: 0 1px 2px 0 var(--header-box-showdow-color);
+  --header-box-showdow-color: #0000000d;
+  --input-box-background: #545d6a;
+  --input-box-border: #545d6a;
+  --input-box-border-focus: #fef08a;
+  --input-box-placeholder: #afbacf;
+  --header-menu-mobile-icon: #f3f4f6;
+  --header-menu-mobile-nav-background: #0f301f;
+  --header-menu-modbile-nav-background-hover: #145032;
+  --separator-background: #141a22;
+  --main-background: #111827;
+  --filter-wrapper-background: #1e293b;
+  --filter-wrapper-text: #f9fafb;
+  --button-primary-background: #3e5b7b;
+  --button-primary-text: var(--vt-c-white);
+  --button-primary-hover-background: #2f4c66;
+  --button-primary-active-background: #1f3c4d;
+  --button-icon-color: #10b981;
+  --button-icon-color-hover: #059669;
+  --button-icon-color-active: #047857;
+  --card-background: #1f2937;
+  --card-border: #4b5563;
+  --card-header-background: #2d3748;
+  --card-header-text: #f9fafb;
+  --card-body-background: #2a2e37;
+  --card-footer-background: #1f2937;
+  --card-footer-text: #cbd5e1;
+  --card-tag-background: #444857;
+  --card-tag-text: var(--vt-c-white);
+  --card-tag-hover-background: #767d96;
+  --card-tag-hover-text: var(--vt-c-white);
+  --icon--hover-color: #374151;
+}
+
+/* Header */
+header {
+  background-color: var(--header-bg);
+  color: var(--header-text);
+  box-shadow: var(--header-box-shadow);
+}
+header h1 {
+  color: var(--header-text);
+}
+header .nav a {
+  color: var(--header-text);
+}
+header .nav a:hover {
+  background-color: var(--header-text-hover-background);
+  text-decoration: none;
+}
+header .router-link-active {
+  color: var(--header-text-active);
+  font-weight: bold;
+}
+header input[type='search'] {
+  background-color: var(--input-box-background);
+  border-color: var(--input-box-border);
+}
+header input[type='search']:focus {
+  border-color: var(--input-box-border-focus);
+}
+header input[type='search']::placeholder {
+  color: var(--input-box-placeholder);
+}
+header .menu-mobile-icon {
+  color: var(--header-menu-mobile-icon);
+}
+header .nav_mobile {
+  background-color: var(--header-menu-mobile-nav-background);
+  color: var(--header-menu-mobile-nav-text);
+}
+header .nav_mobile a:hover {
+  color: var(--header-menu-mobile-nav-text-hover);
+  text-decoration: none;
+  background-color: var(--header-menu-modbile-nav-background-hover);
+}
+header .nav_mobile .router-link-exact-active {
+  color: var(--header-menu-mobile-nav-text-active);
+}
+main {
+  background-color: var(--main-background);
+}
+/* Separator */
+.separator {
+  background-color: var(--separator-background);
+}
+/* Filter Wrapper */
+.filter-wrapper {
+  background-color: var(--filter-wrapper-background);
+}
+.filter-wrapper label {
+  color: var(--filter-wrapper-text);
+}
+.filter-wrapper select {
+  background-color: var(--input-box-background);
+  border-color: var(--input-box-border);
+  color: var(--header-text);
+}
