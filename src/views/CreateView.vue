@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <h2 class="text-2xl font-semibold text-gray-800">새로운 스니펫 생성</h2>
+      <h2 class="text-2xl font-semibold text-[var(--color-gray-800)]">새로운 스니펫 생성</h2>
       <hr class="my-4" />
     </div>
     <snippet-form

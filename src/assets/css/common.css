@@ -98,19 +98,19 @@ table th {
 
 /* info text */
 .info-text {
-  @apply flex gap-2 text-sm text-gray-500 my-2;
+  @apply flex gap-2 text-sm text-[var(--color-gray-500)] my-2;
 }
 .info-text-blue {
-  @apply flex gap-2 text-sm text-blue-500 my-2;
+  @apply flex gap-2 text-sm text-[var(--color-blue-500)] my-2;
 }
 .info-text-red {
-  @apply flex gap-2 text-sm text-red-500 my-2;
+  @apply flex gap-2 text-sm text-[var(--color-red-500)] my-2;
 }
 .info-text-hl {
-  @apply flex gap-2 text-sm text-gray-600 my-2 bg-gray-50 p-3 rounded-lg;
+  @apply flex gap-2 text-sm text-[var(--color-gray-600)] my-2 bg-[var(--color-gray-50)] p-3 rounded-lg;
 }
 .info-text-warm {
-  @apply flex gap-2 text-sm text-amber-600 my-2 bg-amber-50 p-3 rounded-lg;
+  @apply flex gap-2 text-sm text-[var(--color-amber-600)] my-2 bg-[var(--color-amber-50)] p-3 rounded-lg;
 }
 
 /* ellipsis */

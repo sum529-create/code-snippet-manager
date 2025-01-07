@@ -1,5 +1,9 @@
 <template>
-  <form @submit.prevent class="flex flex-col space-y-6" :class="language && 'min-h-screen '">
+  <form
+    @submit.prevent
+    class="form-wrapper flex flex-col space-y-6"
+    :class="language && 'min-h-screen '"
+  >
     <div class="flex-none">
       <label for="title" class="sub-title">Title</label>
       <input
@@ -53,7 +57,7 @@
           </span>
         </label> -->
         <span class="flex-center space-x-2">
-          <span
+          <span class="text-[var(--color-gray-600)]"
             >Code Language: <i>{{ language }}</i></span
           >
           <snippet-code-icon :language="language" />
@@ -176,7 +180,7 @@ const deleteTag = (i: number) => {
 
 <style scoped>
 .sub-title {
-  @apply text-sm font-medium text-gray-700 mb-2;
+  @apply text-sm font-medium mb-2;
 }
 select {
   @apply w-full rounded-lg border p-3;
@@ -184,14 +188,11 @@ select {
 input {
   @apply w-full rounded-lg border p-3;
 }
-textarea {
-  @apply font-mono h-64 w-full bg-gray-50 rounded-lg border p-3;
-}
 .actions {
   @apply flex justify-end gap-4 mt-6;
 }
 .tags-area {
-  @apply flex items-center flex-nowrap border bg-white p-3 rounded-lg border-solid;
+  @apply flex items-center flex-nowrap border p-3 rounded-lg border-solid;
 }
 .tags-area .tag {
   @apply overflow-visible text-clip;
